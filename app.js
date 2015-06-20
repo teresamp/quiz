@@ -5,15 +5,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// TM - Instalado el modulo express-partials
+var partials = require('express-partials');
+// tm-fin
+
 var routes = require('./routes/index');
-// var users = require('./routes/users');  TM-Modulo6-suprimir 
+// var users = require('./routes/users');  TM-Modulo6-suprimir
 
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
+//tm-in  Modulo6
+app.use(partials());
+//tm-fin
 // uncomment after placing your favicon in /public  TM-favicon unizar
 app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
@@ -23,7 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-// app.use('/users', users); TM-Modulo6-suprimir 
+// app.use('/users', users); TM-Modulo6-suprimir
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
