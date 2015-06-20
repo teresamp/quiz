@@ -15,3 +15,6 @@ Así apunta las dependencias en el fichero package.json de quiz
 
  - Modificar app.js
  - Modificar las vistas
+ Guardo la version
+
+4) CSS adaptable a móviles - media-queries
