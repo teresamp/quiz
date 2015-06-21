@@ -31,3 +31,7 @@ Git
 https://github.com/teresamp/quiz
 
 6) Instalación de sequelize SQLite3 y ajuste de los ficheros.
+    crear el fichero .env para las variables de la bd
+7) Paso a Postgres
+  - Cambiar dependencias en package.json
+8) Añadir más preguntas 
