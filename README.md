@@ -18,3 +18,5 @@ Así apunta las dependencias en el fichero package.json de quiz
  Guardo la version
 
 4) CSS adaptable a móviles - media-queries
+
+5) Heroki. Creo cuenta, instalo tools y creo el fichero Procfile
