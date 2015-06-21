@@ -22,12 +22,12 @@ Así apunta las dependencias en el fichero package.json de quiz
 5) Heroku. Creo cuenta, instalo tools y creo el fichero Procfile
 
 ---
-
 Las url:
 
 herokuapp
 https://quiz-tm.herokuapp.com
 
-
 Git
 https://github.com/teresamp/quiz
+
+6) Instalación de sequelize SQLite3 y ajuste de los ficheros.
