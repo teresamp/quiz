@@ -25,6 +25,7 @@ Así apunta las dependencias en el fichero package.json de quiz
 Las url:
 
 herokuapp
+
 https://quiz-tm.herokuapp.com
 
 Git
@@ -34,4 +35,9 @@ https://github.com/teresamp/quiz
     crear el fichero .env para las variables de la bd
 7) Paso a Postgres
   - Cambiar dependencias en package.json
-8) Añadir más preguntas 
+
+8) Añadir más preguntas
+
+9) Añadir el buscar el el campo pregunta
+
+10) Añadir el Autoload  

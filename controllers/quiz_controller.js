@@ -3,7 +3,7 @@ var models = require('../models/models.js');
 //TM-fin
 //Autoload
 
-// TM-in  realfuente
+// TM-in 
 function replaceAll( text, busca, reemplaza ){
   while (text.toString().indexOf(busca) != -1)
   text = text.toString().replace(busca,reemplaza);
