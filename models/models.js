@@ -1,7 +1,8 @@
 var path =require('path');
 
 //Postgres DATABASE_URL=postgres://user:passwd@host:port/DATABASE_URL
-DATABASE_URL=postgres://gploygdvxspnva:7_6QKWYKAtQCvEVo2rax5JcXrG@ec2-54-83-205-164.compute-1.amazonaws.com:5432/d1tbm4uhbr2ish
+// lo pongo en .env
+//DATABASE_URL="postgres://gploygdvxspnva:7_6QKWYKAtQCvEVo2rax5JcXrG@ec2-54-83-205-164.compute-1.amazonaws.com:5432/d1tbm4uhbr2ish";
 //SQLite DATABASE_URL= sqlite://:@:/
 
 var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
