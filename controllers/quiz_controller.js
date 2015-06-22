@@ -3,7 +3,7 @@ var models = require('../models/models.js');
 //TM-fin
 //Autoload
 
-// TM-in 
+// TM-in
 function replaceAll( text, busca, reemplaza ){
   while (text.toString().indexOf(busca) != -1)
   text = text.toString().replace(busca,reemplaza);
@@ -62,4 +62,11 @@ exports.answer = function(req, res) {
         resultado='Respuesta correcta';
     }
     res.render('quizes/answer', { quiz: req.quiz, respuesta: resultado});
+};
+
+exports.new = function(req, res) {
+     var quiz = models.Quiz.build(
+       {pregunta:"Pregunta", respuesta: "Respuesta"}
+    ); 
+    res.render('quizes/new', { quiz: quiz });
 };
