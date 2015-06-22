@@ -15,18 +15,31 @@ var port      = (url[5]||null);
 var host      = (url[4]||null);
 var storage  = process.env.DATABASE_STORAGE;
 
+console.log ("Base de datos=" + DB_name);
+console.log ("User=" + user);
+console.log("pwd=" + pwd);
+console.log("port=" + port);
+console.log ("host= " + host);
+console.log("protocol= " + protocol);
+console.log("dialect= " + dialect );
+
+
+
 // Cargar DB SQLite:  Modelo ORM
 
 var Sequelize = require('sequelize');
 // User DB SQLite
-var sequelize = new Sequelize(DB_name, user, pwd,
+/* var sequelize = new Sequelize(DB_name, user, pwd,
                        { dialect: protocol,
                          protocol: protocol,
                          port:     port,
-                         storage: storage, // SQLite (.env)
+                         storage: storage,    // SQLite (.env)
                          omitNull: true     // solo Postgres
                         }
                      );
+ */
+
+var sequelize = new Sequelize('postgres://gploygdvxspnva:7_6QKWYKAtQCvEVo2rax5JcXrG@ec2-54-83-205-164.compute-1.amazonaws.com:5432/d1tbm4uhbr2ish');
 // Importar la definicion de la tabla QUIZ de quiz.js
 
 var quiz_path = path.join(__dirname,'quiz');

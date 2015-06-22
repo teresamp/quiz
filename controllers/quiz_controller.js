@@ -2,6 +2,17 @@
 var models = require('../models/models.js');
 //TM-fin
 //Autoload
+
+// TM-in  realfuente
+function replaceAll( text, busca, reemplaza ){
+  while (text.toString().indexOf(busca) != -1)
+  text = text.toString().replace(busca,reemplaza);
+  return text;
+
+}
+
+//tm-fin
+
 exports.load = function(req, res, next, quizId) {
   models.Quiz.find(quizId).then(
     function(quiz) {
@@ -13,15 +24,30 @@ exports.load = function(req, res, next, quizId) {
   ).catch(function(error) { next(error);});
 };
 
-// tm-in varias preguntas
+// GET /quizes
 exports.index = function(req, res) {
+
+	var resultado=req.query.search;
+	if (resultado){
+	resultado=replaceAll(resultado,' ','%');
+	}
+  models.Quiz.findAll(resultado ? {where: ["pregunta like ?", '%' + resultado + '%'], order: 'pregunta ASC'} : {}).then(
+		function(quizes) {
+			res.render('quizes/index', {quizes: quizes});
+		}
+	).catch(function(error) {next(error);});
+};
+
+
+// tm-in varias preguntas  --
+/*exports.index = function(req, res) {
   models.Quiz.findAll().then
     (function(quizes) {
        res.render('quizes/index.ejs', { quizes: quizes});
     }
   ).catch(function(error) { next(error);})
 };
-
+*/
 
 //GET  /quizes/question  TM- JUnio 2015
 exports.show = function(req, res) {
