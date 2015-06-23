@@ -35,9 +35,7 @@ https://github.com/teresamp/quiz
     crear el fichero .env para las variables de la bd
 7) Paso a Postgres
   - Cambiar dependencias en package.json
-
 8) Añadir más preguntas
-
 9) Añadir el buscar el el campo pregunta
-
-10) Añadir el Autoload  
+10) Añadir el Autoload 
+11) Añadir preguntas en la base de datos  
