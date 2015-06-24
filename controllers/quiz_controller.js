@@ -66,12 +66,12 @@ exports.answer = function(req, res) {
        { quiz: req.quiz, respuesta: resultado,
          errors[] });
 };
-
+// GET  /quizes/new
 exports.new = function(req, res) {
-     var quiz = models.Quiz.build(
-       {pregunta:"Pregunta", respuesta: "Respuesta"}
+     var quiz = models.Quiz.build( // crea olbjeto quiz
+       {pregunta: "Pregunta", respuesta: "Respuesta"}
     );
-    res.render('quizes/new', { quiz: quiz, errors: [] });
+    res.render('quizes/new', { quiz: quiz, errors:[] });
 };
 
 // POST /quizes/create
@@ -85,8 +85,8 @@ export.create = function(req, res) {
            res.render('quizes/new',{quiz: quiz, errors: err.errors});
          } else {
 
-           quiz.save( {fields: ["pregunta", "respuesta"]}).then.(function(){
-           res.direct('/quizes')})
+           quiz.save( {fields: ["pregunta", "respuesta"]})
+           .then.(function(){ res.direct('/quizes')})
          }
       }
     );

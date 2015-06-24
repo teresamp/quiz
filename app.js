@@ -25,7 +25,7 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 //app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded();  //modulo8
+app.use(bodyParser.urlencoded());  //Modulo8
 
 
 app.use(cookieParser());

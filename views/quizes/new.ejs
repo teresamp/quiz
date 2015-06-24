@@ -1,8 +1,4 @@
-// GET /quizes/new
-export.new = function(req, res) {
-  var quiz = models.Quiz.build( // crea el objeto quiz
-     { pregunta: "Pregunta", respuesta: "Respuesta" }
-
-  );
-  res.render('quizes/new', { quiz: quiz });
-};
+Añadir pregunta: <p>
+<form method="post" action="/quizes/create" >
+     <% include _form.ejs %>
+</form>
