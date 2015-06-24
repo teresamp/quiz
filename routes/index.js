@@ -6,15 +6,15 @@ var quizController = require('../controllers/quiz_controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Quiz', error: []});
+//res.render('index', { title: 'Quiz', error: []});
+res.render('index', { title: 'Quiz'});
 });
 
 router.param('quizId', quizController.load);  //Autoload :quizId
 
-
-router.get('/author', function(req, res, next) {
-  res.render('author', { author: 'Teresa', image: '/images/foto.png' });
-});
+//router.get('/author', function(req, res, next) {
+//  res.render('author', { author: 'Teresa', image: '/images/foto.png' });
+//});
 
 router.get('/quizes', quizController.index);
 router.get('/quizes/:quizId(\\d+)', quizController.show);
