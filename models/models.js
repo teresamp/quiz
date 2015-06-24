@@ -29,7 +29,7 @@ console.log("dialect= " + dialect );
 
 var Sequelize = require('sequelize');
 // User DB SQLite
-/* var sequelize = new Sequelize(DB_name, user, pwd,
+var sequelize = new Sequelize(DB_name, user, pwd,
                        { dialect: protocol,
                          protocol: protocol,
                          port:     port,
@@ -37,9 +37,8 @@ var Sequelize = require('sequelize');
                          omitNull: true     // solo Postgres
                         }
                      );
- */
 
-var sequelize = new Sequelize('postgres://gploygdvxspnva:7_6QKWYKAtQCvEVo2rax5JcXrG@ec2-54-83-205-164.compute-1.amazonaws.com:5432/d1tbm4uhbr2ish');
+// var sequelize = new Sequelize('postgres://gploygdvxspnva:7_6QKWYKAtQCvEVo2rax5JcXrG@ec2-54-83-205-164.compute-1.amazonaws.com:5432/d1tbm4uhbr2ish');
 // Importar la definicion de la tabla QUIZ de quiz.js
 
 var quiz_path = path.join(__dirname,'quiz');
