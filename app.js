@@ -5,9 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
 // TM - Instalado el modulo express-partials
 var partials = require('express-partials');
-// tm-fin
+// Modulo 8
+var methodOverride =require('method-override');
+//
 
 var routes = require('./routes/index');
 // var users = require('./routes/users');  TM-Modulo6-suprimir
@@ -29,6 +32,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(bodyParser.urlencoded());  //Modulo8
 
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);

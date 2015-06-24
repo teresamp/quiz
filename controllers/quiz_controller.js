@@ -90,3 +90,35 @@ exports.create = function(req, res) {
     .then( function(){ res.redirect('/quizes')}) ;
     }
     };
+
+
+    // GET quizes/:id/edit
+    export.edit = function(req, res) {
+      var quiz = req.quiz; // Carga de quiz
+      res.render('quizes/edirt', {quiz: quiz, errors: []});
+    };
+
+    //PUT /quizes/:id
+    exports.update =function(req, res) {
+      req.quiz.pregunta = req.body.quiz.pregunta;
+      req.quiz.respuesta = req.body.quiz.respuesta;
+      req.quiz.validate()
+      .then(
+           function(err) {
+               if (err) {
+                 res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
+
+               } else {
+                 req.quiz
+                 .save ({fields: ["pregunta", "respuesta"]})
+                 .then( function() { res.redirct('quizes');});
+               }
+           }
+      );
+    };
+
+    export.destroy = function(req, res) {
+      req.quiz.destroy().then( function() {
+      res.direct(/quizes);
+    }).catch(function(error) {next(error)});
+    };
