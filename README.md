@@ -38,4 +38,5 @@ https://github.com/teresamp/quiz
 8) Añadir más preguntas
 9) Añadir el buscar el el campo pregunta
 10) Añadir el Autoload 
-11) Añadir preguntas en la base de datos  
+11) Añadir preguntas en la base de datos
+12) Editar /Borrar   
