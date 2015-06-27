@@ -24,7 +24,6 @@ console.log("protocol= " + protocol);
 console.log("dialect= " + dialect );
 
 
-
 // Cargar DB SQLite:  Modelo ORM
 
 var Sequelize = require('sequelize');
@@ -46,17 +45,19 @@ var Quiz = sequelize.import(quiz_path);
 exports.Quiz =Quiz; // exportar la definición de la tabla Quiz
 
 // sequelize.sync() crea e inicializa la tabla de preguntas DB
-sequelize.sync().then(function() {
+sequelize.sync().success(function(count) {
   // success(..) ejecuta el manejador una vez creada la tabla
-  Quiz.count().then(function (count){
+  Quiz.count().success(function () {
     if(count === 0) { //la tabla se inicializa solo si está vacía
          Quiz.create({ pregunta:  'Capital de Italia',
-                        respuesta: 'Roma'
-                     });
+                        respuesta: 'Roma',
+                        tema: 'Humanidades'
+                     })
          Quiz.create({ pregunta:  'Capital de Portugal',
-                       respuesta: 'Lisboa'
+                       respuesta: 'Lisboa',
+                       tema: 'Humanidades'
                     })
-        .then(function(){console.log('Base de datos inicializada')});
+        .success(function(){console.log('Base de datos inicializada')});
       };
   });
 });

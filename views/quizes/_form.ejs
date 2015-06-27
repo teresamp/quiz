@@ -1,6 +1,20 @@
 <label for="preg" class="rem">Pregunta:</label>
-<input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>" /> <p>
+<input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>"/> <p>
 <label for="resp" class="rem">Respuesta:</label>
-<input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>" /> <p>
+<input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/> <p>
+<!-- TODO: selected no va, tiene que ir en cada option -->
+<label for="" class="rem">Tema:</label>
+<select name="quiz[tema]">
+  <option value="otro" <% if (quiz.tema === 'otro')
+      { %> selected="selected" <% } %>   >Otro</option>
+  <option value="humanidades"  <% if (quiz.tema === 'Humanidades')
+      { %> selected="selected" <% } %> >Humanidades</option>
+  <option value="ocio" <% if (quiz.tema === 'ocio')
+      { %> selected="selected" <% } %>>Ocio</option>
+  <option value="ciencia" <% if (quiz.tema === 'Ciencia')
+      { %> selected="selected" <% } %>>Ciencia</option>
+  <option value="tecnologia" <% if (quiz.tema === 'Tecnologia')
+      { %> selected="selected" <% } %>>Tecnolog&iacute;a</option>
+</select>
 <a href="/quizes"><button type="button">Cancelar</button></a>
 <input type="submit" value="Salvar">
