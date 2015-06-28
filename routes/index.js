@@ -11,8 +11,8 @@ router.get('/', function(req, res) {
 
 router.param('quizId', quizController.load);  //Autoload :quizId
 
-router.get('/author', function(req, res, next) {
-res.render('author', { author: 'Teresa', image: '/images/foto.png' });
+router.get('/author', function(req, res) {
+res.render('author', { author: 'Teresa', image: '/images/foto.png', errors: []});
 });
 
 router.get('/quizes', quizController.index);
