@@ -59,24 +59,23 @@ exports.new = function(req, res) {
 // POST /quizes/create
 exports.create = function(req, res) {
     var quiz = models.Quiz.build( req.body.quiz );
-    var errors = quiz.validate();//ya que el objeto errors no tiene then(
-/*    if (errors) {
-       var i=0; var errores=new Array();//se convierte en [] con la propiedad message por compatibilida con layout
-       for (var prop in errors) errores[i++]={message: errors[prop]};
-       res.render('quizes/new', {quiz: quiz, errors: errores});
+    quiz.validate().then(function(err){
+    if(err) {
+      res.render('quizes/new', {quiz: quiz, errors: err.errors});
     } else {
-*/
-      quiz // save: guarda en DB campos pregunta y respuesta de quiz- M8
-     .save({fields: ["pregunta", "respuesta", "tema"]})
-     .then( function(){ res.redirect('/quizes')}) ;
-//    }
+      // Guarda en BD los campos pregunta y respuesta de quiz
+       quiz.save({fields: ["pregunta", "respuesta", "tema"]}).then(function() {
+           res.redirect('/quizes');
+       }); // Redirección HTTP a lista de preguntas
+    }
+   });
 };
 
 // GET quizes/:id/edit
 exports.edit = function(req, res) {
       var quiz = req.quiz; // Carga de quiz
       res.render('quizes/edit', {quiz: quiz, errors: []});
-    };
+};
 
 //PUT /quizes/:id
 exports.update = function(req, res) {
@@ -86,30 +85,20 @@ exports.update = function(req, res) {
   req.quiz.respuesta = req.body.quiz.respuesta;
   req.quiz.tema = req.body.quiz.tema;
   // Faltan los errores
-  req.quiz.save( {fields: ["pregunta", "respuesta", "tema"]})
-  .then( function(){ res.redirect('/quizes')}) ;
-
+  req.quiz.validate().then(function(err){
+   if(err) {
+      res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
+    } else {
+      // Guarda en BD los campos pregunta y respuesta de quiz
+       req.quiz.save({fields: ["pregunta", "respuesta"]}).then(function() {
+           res.redirect('/quizes');
+       }); // Redirección HTTP a lista de preguntas
+    }
+  });
 };
 
-
-  //console.log( "ERRORS = " + errors);
-
-//      var errors = quiz.validate();//ya qe el objeto errors no tiene then(
-  //var errors = quiz.validate();//ya qe el objeto errors no tiene then(
-//  console.log( "ERRORS_VALIDATE  = " + errors);
-/*  if (errors || (typeof errors === 'undefined') )  {
-      var i=0; var errores=new Array();//se convierte en [] con la propiedad message por compatibilida con layout
-        for (var prop in errors) errores[i++]={message: errors[prop]};
-        res.render('quizes/edit', {quiz: req.quiz, errors: errores});
-      } else {
-        quiz // save: guarda en DB campos pregunta y respuesta de quiz
-       .save({fields: ["pregunta", "respuesta", "tema"]})
-       .then( function(){ res.redirect('/quizes')}) ;
-      }
-    };
-*/
 exports.destroy = function(req, res) {
       req.quiz.destroy().then( function() {
       res.redirect('/quizes');
     }).catch(function(error) {next(error)});
-    };
+};

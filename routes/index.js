@@ -15,6 +15,9 @@ router.get('/author', function(req, res) {
 res.render('author', { author: 'Teresa', image: '/images/foto.png', errors: []});
 });
 
+//router.get('/search', function(req, res) { res.render('search', {}); });
+
+
 router.get('/quizes', quizController.index);
 router.get('/quizes/:quizId(\\d+)', quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
