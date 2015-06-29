@@ -23,7 +23,7 @@ exports.load = function(req, res, next, quizId) {
 
 
 //  Varias preguntas  --
-exports.index = function(req, res, next) {
+exports.index = function(req, res) {
   models.Quiz.findAll().then
     (function(quizes) {
        res.render('quizes/index', { quizes: quizes, errors: []});
