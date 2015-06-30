@@ -16,14 +16,14 @@ var storage  = process.env.DATABASE_STORAGE;
 var Sequelize = require('sequelize');
 
 // Usar BBDD SQLite o Postgres
-var sequelize = new Sequelize(DB_name, user, pwd, 
+var sequelize = new Sequelize(DB_name, user, pwd,
   { dialect:  protocol,
     protocol: protocol,
     port:     port,
     host:     host,
     storage:  storage,  // solo SQLite (.env)
     omitNull: true      // solo Postgres
-  }      
+  }
 );
 
 
@@ -32,39 +32,21 @@ var Quiz = sequelize.import(path.join(__dirname,'quiz'));
 
 exports.Quiz = Quiz; // exportar definición de tabla Quiz
 
-
-console.log("Nombre BD" + DB_name);
-
-// sequelize.sync() crea e inicializa tabla de preguntas en DB
-//sequelize.sync().success(function() {
-//sequelize.sync().then(function() {
-  // success(..) ejecuta el manejador una vez creada la tabla
-  //Quiz.count().success(function (count){
-/*    Quiz.count().then(function (count){
-    if(count === 0) {   // la tabla se inicializa solo si está vacía
-        console.log("Creando la BD");
-        Quiz.bulkCreate( 
-          [ {pregunta: 'Capital de Italia',   respuesta: 'Roma', tema: 'Humanidades'},
-            {pregunta: 'Capital de Portugal', respuesta: 'Lisboa', tema: 'Humanidades'}
-          ]
-      ).then(function(){console.log('Base de datos inicializada')});
-
-    };
-  });
-});
-
-*/
-
 sequelize.sync().then(function() {
   // then(...) ejecuta el manejador una vez creada la tabla
   Quiz.count().then(function (count) {
-    if(count === 0) { // la tabla se inicializa solo si está vacía
-      Quiz.bulkCreate(
-        [ {pregunta: 'Capital de Italia',   respuesta: 'Roma', tema: "Humanidadesa"},
-          {pregunta: 'Capital de Portugal', respuesta: 'Lisboa', tema: "Humanidades"}
-          ]).then(function() {console.log("Base de datos inicializada")});
-    };
-  });
+        if (count===0){ // la tabla se inicializa solo si está vacía
+		  	exports.registros=registros;
+		  	Quiz.create({pregunta:'Capital de Italia',
+						 respuesta: 'Roma',
+						 categoria: 'Humanidades'
+						});
+			Quiz.create({pregunta:'Capital de Portugal',
+						 respuesta: 'Lisboa',
+						 categoria: 'Humanidades'
+						})
+			.then(function(){console.log('Base de datos incializada')});
+        }  
+	})
 });
-
 
