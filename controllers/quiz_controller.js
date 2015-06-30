@@ -59,7 +59,7 @@ exports.new = function(req, res) {
 // POST /quizes/create
 exports.create = function(req, res) {
     var quiz = models.Quiz.build( req.body.quiz );
-    quiz.validate().then(function(err){
+/*    quiz.validate().then(function(err){
     if(err) {
       res.render('quizes/new', {quiz: quiz, errors: err.errors});
     } else {
@@ -69,6 +69,10 @@ exports.create = function(req, res) {
        }); // Redirección HTTP a lista de preguntas
     }
    });
+*/
+ quiz.save({fields: ["pregunta", "respuesta", "tema"]}).then(function() {
+           res.redirect('/quizes');)};
+
 };
 
 // GET quizes/:id/edit
