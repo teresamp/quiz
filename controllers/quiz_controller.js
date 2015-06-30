@@ -116,7 +116,7 @@ req.quiz.save({fields: ["pregunta", "respuesta", "tema"]}).then(function() {
       res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
     } else {
       // Guarda en BD los campos pregunta y respuesta de quiz
-       req.quiz.save({fields: ["pregunta", "respuesta"]}).then(function() {
+       req.quiz.save({fields: ["pregunta", "respuesta", "tema"]}).then(function() {
            res.redirect('/quizes');
        }); // Redirección HTTP a lista de preguntas
     }
@@ -129,7 +129,7 @@ if (errors)
    res.render('quizes/edit', {quiz: quiz, errors: errors});
 } else {
 quiz // save: guarda en DB campos pregunta y respuesta de quiz
-.save({fields: ["pregunta", "respuesta", "temaa"]})
+.save({fields: ["pregunta", "respuesta", "tema"]})
 .then( function(){ res.redirect('/quizes')}) ;
 }
 
