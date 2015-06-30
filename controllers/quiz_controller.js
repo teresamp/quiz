@@ -70,10 +70,24 @@ exports.create = function(req, res) {
     }
    });
 */
- quiz.save({fields: ["pregunta", "respuesta", "tema"]}).then(function() {
-           res.redirect('/quizes');)};
+// quiz.save({fields: ["pregunta", "respuesta", "tema"]}).then(function() {
+//           res.redirect('/quizes');});
+
+// Forma del foro 
+
+
+var errors = quiz.validate();
+if (errors)
+{
+   res.render('quizes/new', {quiz: quiz, errors: errors});
+} else {
+quiz // save: guarda en DB campos pregunta y respuesta de quiz
+.save({fields: ["pregunta", "respuesta", "temaa"]})
+.then( function(){ res.redirect('/quizes')}) ;	
+}
 
 };
+
 
 // GET quizes/:id/edit
 exports.edit = function(req, res) {
@@ -83,14 +97,14 @@ exports.edit = function(req, res) {
 
 //PUT /quizes/:id
 exports.update = function(req, res) {
-//  var quiz = models.Quiz.build( req.body.quiz );
+  var quiz = models.Quiz.build( req.body.quiz );
 // Si quito la anterior da error pero add una nueva pregunta con los cambios
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
   req.quiz.tema = req.body.quiz.tema;
   console.log("Voy a validar req.quiz");
   // Faltan los errores
-  req.quiz.validate().then(function(err){
+/*  req.quiz.validate().then(function(err){
    if(err) {
       res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
     } else {
@@ -101,6 +115,20 @@ exports.update = function(req, res) {
     }
   });
 };
+*/
+var errors = quiz.validate();
+if (errors)
+{
+   res.render('quizes/new', {quiz: quiz, errors: errors});
+} else {
+quiz // save: guarda en DB campos pregunta y respuesta de quiz
+.save({fields: ["pregunta", "respuesta", "temaa"]})
+.then( function(){ res.redirect('/quizes')}) ;
+}
+
+
+};
+
 
 exports.destroy = function(req, res) {
       req.quiz.destroy().then( function() {
