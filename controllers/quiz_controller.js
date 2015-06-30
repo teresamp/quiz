@@ -59,6 +59,7 @@ exports.new = function(req, res) {
 // POST /quizes/create
 exports.create = function(req, res) {
     var quiz = models.Quiz.build( req.body.quiz );
+    console.log("Voy a crear un quiz con los valores ("+quiz['pregunta']+","+quiz['respuesta']+","+quiz['tema']);
 // Forma del foro 
 
  var errors = quiz.validate();
@@ -76,6 +77,7 @@ exports.create = function(req, res) {
 // GET quizes/:id/edit
 exports.edit = function(req, res) {
       var quiz = req.quiz; // Carga de quiz
+      console.log("Estoy en EDIT y el valor de quiz[pregunta] es "+quiz['pregunta']+ " y el de tema es "+quiz['tema']);
       res.render('quizes/edit', {quiz: quiz, errors: []});
 };
 
@@ -83,6 +85,8 @@ exports.edit = function(req, res) {
 exports.update = function(req, res) {
 //  var quiz = models.Quiz.build( req.body.quiz );
 // Si quito la anterior da error pero add una nueva pregunta con los cambios
+
+
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
   req.quiz.tema = req.body.quiz.tema;
