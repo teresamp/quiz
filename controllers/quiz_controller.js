@@ -104,7 +104,7 @@ exports.update = function(req, res) {
   req.quiz.tema = req.body.quiz.tema;
   console.log("Voy a validar req.quiz");
   // Faltan los errores
-/*  req.quiz.validate().then(function(err){
+  req.quiz.validate().then(function(err){
    if(err) {
       res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
     } else {
@@ -115,11 +115,11 @@ exports.update = function(req, res) {
     }
   });
 };
-*/
+/*
 var errors = quiz.validate();
 if (errors)
 {
-   res.render('quizes/new', {quiz: quiz, errors: errors});
+   res.render('quizes/edit', {quiz: quiz, errors: errors});
 } else {
 quiz // save: guarda en DB campos pregunta y respuesta de quiz
 .save({fields: ["pregunta", "respuesta", "temaa"]})
@@ -129,7 +129,7 @@ quiz // save: guarda en DB campos pregunta y respuesta de quiz
 
 };
 
-
+*/
 exports.destroy = function(req, res) {
       req.quiz.destroy().then( function() {
       res.redirect('/quizes');
