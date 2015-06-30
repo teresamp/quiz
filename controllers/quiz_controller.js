@@ -103,8 +103,15 @@ exports.update = function(req, res) {
   req.quiz.respuesta = req.body.quiz.respuesta;
   req.quiz.tema = req.body.quiz.tema;
   console.log("Voy a validar req.quiz");
+
+req.quiz.save({fields: ["pregunta", "respuesta","tema"]}).then(function() {
+           res.redirect('/quizes');
+       }); // Redirección HTTP a lista de preguntas
+
+};
+
   // Faltan los errores
-  req.quiz.validate().then(function(err){
+/*  req.quiz.validate().then(function(err){
    if(err) {
       res.render('quizes/edit', {quiz: req.quiz, errors: err.errors});
     } else {
@@ -115,7 +122,7 @@ exports.update = function(req, res) {
     }
   });
 };
-/*
+
 var errors = quiz.validate();
 if (errors)
 {
@@ -130,6 +137,8 @@ quiz // save: guarda en DB campos pregunta y respuesta de quiz
 };
 
 */
+
+
 exports.destroy = function(req, res) {
       req.quiz.destroy().then( function() {
       res.redirect('/quizes');
