@@ -104,7 +104,7 @@ exports.update = function(req, res) {
   req.quiz.tema = req.body.quiz.tema;
   console.log("Voy a validar req.quiz");
 
-req.quiz.save({fields: ["pregunta", "respuesta","tema"]}).then(function() {
+req.quiz.save({fields: ["pregunta", "respuesta", "tema"]}).then(function() {
            res.redirect('/quizes');
        }); // Redirección HTTP a lista de preguntas
 
