@@ -82,7 +82,7 @@ if (errors)
    res.render('quizes/new', {quiz: quiz, errors: errors});
 } else {
 quiz // save: guarda en DB campos pregunta y respuesta de quiz
-.save({fields: ["pregunta", "respuesta", "temaa"]})
+.save({fields: ["pregunta", "respuesta", "tema"]})
 .then( function(){ res.redirect('/quizes')}) ;	
 }
 
@@ -97,7 +97,7 @@ exports.edit = function(req, res) {
 
 //PUT /quizes/:id
 exports.update = function(req, res) {
-  var quiz = models.Quiz.build( req.body.quiz );
+//  var quiz = models.Quiz.build( req.body.quiz );
 // Si quito la anterior da error pero add una nueva pregunta con los cambios
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
