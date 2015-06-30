@@ -84,6 +84,7 @@ exports.update = function(req, res) {
   req.quiz.pregunta = req.body.quiz.pregunta;
   req.quiz.respuesta = req.body.quiz.respuesta;
   req.quiz.tema = req.body.quiz.tema;
+  console.log("Voy a validar req.quiz");
   // Faltan los errores
   req.quiz.validate().then(function(err){
    if(err) {

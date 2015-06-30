@@ -37,10 +37,10 @@ console.log("Nombre BD" + DB_name);
 
 // sequelize.sync() crea e inicializa tabla de preguntas en DB
 //sequelize.sync().success(function() {
-sequelize.sync().then(function() {
+//sequelize.sync().then(function() {
   // success(..) ejecuta el manejador una vez creada la tabla
   //Quiz.count().success(function (count){
-    Quiz.count().then(function (count){
+/*    Quiz.count().then(function (count){
     if(count === 0) {   // la tabla se inicializa solo si está vacía
         console.log("Creando la BD");
         Quiz.bulkCreate( 
@@ -52,3 +52,19 @@ sequelize.sync().then(function() {
     };
   });
 });
+
+*/
+
+sequelize.sync().then(function() {
+  // then(...) ejecuta el manejador una vez creada la tabla
+  Quiz.count().then(function (count) {
+    if(count === 0) { // la tabla se inicializa solo si está vacía
+      Quiz.bulkCreate(
+        [ {pregunta: 'Capital de Italia',   respuesta: 'Roma', tema: "Geografia"},
+          {pregunta: 'Capital de Portugal', respuesta: 'Lisboa', tema: "Geografia"}
+          ]).then(function() {console.log("Base de datos inicializada")});
+    };
+  });
+});
+
+
