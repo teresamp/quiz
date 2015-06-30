@@ -26,7 +26,7 @@ Las url:
 
 herokuapp
 
-https://quiz-tm.herokuapp.com
+https://quiz-m8.herokuapp.com
 
 Git
 https://github.com/teresamp/quiz
