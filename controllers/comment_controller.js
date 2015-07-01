@@ -11,7 +11,7 @@ exports.load = function (req, res, next, commentId) {
                 req.comment = comment;
                 next();
             } else {
-                next (new Error("No existe commentId=" + commentId));
+                next(new Error("No existe commentId=" + commentId));
             }
         }).catch(function (error) {next (error);});
 };
@@ -49,7 +49,7 @@ exports.create = function(req, res) {
 // GET /quizes/:quizId/comments/:commentId/publish
 exports.publish = function (req, res) {
         req.comment.publicado = true;
-        req.comment.save ( {fields: ['publicado']}).then (function(){
+        req.comment.save ( {fields: ['publicado']}).then( function(){
             res.redirect('/quizes/' + req.params.quizId);
         }).catch(function (error) {next (error)});
 };

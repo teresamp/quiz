@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
 });
 
 router.param('quizId', quizController.load);  //Autoload :quizId
-//router.param('commentId', commentController.load); // autoload :commentId
+router.param('commentId', commentController.load); // autoload :commentId
 
 router.get('/author', function(req, res) {
    res.render('author', { author: 'Teresa', image: '/images/foto.png', errors: []});
