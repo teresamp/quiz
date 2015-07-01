@@ -28,12 +28,11 @@ var sequelize = new Sequelize(DB_name, user, pwd,
 
 // Añadir comentarios Modulo9
 // Importar la definicion de la tabla Quiz en quiz.js
-var Quiz = sequelize.import(path.join(__dirname,'quiz'));
-var quiz_path = path.join(__dirname, "quiz");
+var quiz_path = path.join(__dirname, 'quiz');
 var Quiz = sequelize.import(quiz_path);
 
-// Importar definición de la tabla Comment
-var comment_path = path.join(__dirname, "comment");
+// Importar definición de la tabla Comment comment.js
+var comment_path = path.join(__dirname, 'comment');
 var Comment = sequelize.import(comment_path);
 
 Comment.belongsTo(Quiz);

@@ -1,9 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-// TM junio 2016
+// TM julio 2015 - Presguntas-Comentarios
 var quizController = require('../controllers/quiz_controller');
-var quizController = require('../controllers/comment_controller');
+var commentController = require('../controllers/comment_controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -11,7 +11,7 @@ router.get('/', function(req, res) {
 });
 
 router.param('quizId', quizController.load);  //Autoload :quizId
-router.param('commentId', commentController.load); // autoload :commentId
+//router.param('commentId', commentController.load); // autoload :commentId
 
 router.get('/author', function(req, res) {
    res.render('author', { author: 'Teresa', image: '/images/foto.png', errors: []});

@@ -83,7 +83,7 @@ exports.new = function(req, res) {
 exports.create = function(req, res){
    var quiz = models.Quiz.build( req.body.quiz );
 
-   var errors = quiz.validate();//ya qe el objeto errors no tiene then(
+   var errors = quiz.validate();//ya que el objeto errors no tiene then(
    if (errors)
   {
      var i=0;
