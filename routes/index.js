@@ -3,6 +3,7 @@ var router = express.Router();
 
 // TM junio 2016
 var quizController = require('../controllers/quiz_controller');
+var quizController = require('../controllers/comment_controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -10,9 +11,10 @@ router.get('/', function(req, res) {
 });
 
 router.param('quizId', quizController.load);  //Autoload :quizId
+router.param('commentId', commentController.load); // autoload :commentId
 
 router.get('/author', function(req, res) {
-res.render('author', { author: 'Teresa', image: '/images/foto.png', errors: []});
+   res.render('author', { author: 'Teresa', image: '/images/foto.png', errors: []});
 });
 
 //router.get('/search', function(req, res) { res.render('search', {}); });
@@ -28,6 +30,7 @@ router.get('/quizes/:quizId(\\d+)/edit', quizController.edit);
 router.put('/quizes/:quizId(\\d+)', quizController.update);
 router.delete('/quizes/:quizId(\\d+)', quizController.destroy);
 
-
+router.get('/quizes/:quizId(\\d+)/comments/new', commentController.new);
+router.post('/quizes/:quizId(\\d+)/comments', commentController.create);
 
 module.exports = router;

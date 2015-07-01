@@ -4,8 +4,14 @@ var models = require('../models/models.js');
 //Autoload
 //
 exports.load = function(req, res, next, quizId) {
-  models.Quiz.find(quizId).then(
-    function(quiz) {
+   models.Quiz.find({
+        where:   {
+           id: Number(quizId)
+        },
+        include: [{
+            model: models.Comment
+        }]
+     }).then(function(quiz) {
       if (quiz) {
         req.quiz = quiz;
         next();
@@ -14,7 +20,7 @@ exports.load = function(req, res, next, quizId) {
   ).catch(function(error) { next(error);});
 };
 
-//Créditos 
+//Créditos
 //
 exports.author=function(req,res){
 	res.render('quizes/author',{errors:[]});
@@ -44,30 +50,25 @@ exports.index=function(req,res){
 		}
 			res.render('quizes/index.ejs',{ quizes: quizes,errors:[]});
 		});
-
 	}
-
-
 };
 
 
 //GET  /quizes/question  TM- JUnio 2015
 
-exports.show=function(req,res){
-	models.Quiz.findAll().success(function(quiz){
+exports.show = function(req,res) {
 		res.render('quizes/show',{ quiz: req.quiz, errors:[]});
-	});
 };
-
 
 // GET /quizes/:id/answer
 exports.answer = function(req, res) {
-    var resultado = "Respuesta incorrecta";
-    if (req.query.respuesta === req.quiz.respuesta) {
-        res.render('quizes/answer', {quiz: req.quiz, respuesta: 'Respuesta correcta', errors:[]});
-    }else {
-        res.render('quizes/answer', {quiz: req.quiz, respuesta: 'Respuesta incorrecta', errors:[]});
-    };
+   models.Quiz.findById(req.params.quizId).then(function(quiz) {
+      var resultado = "Incorrecto";
+      if (req.query.respuesta.toLowerCase() === req.quiz.respuesta.toLowerCase()) {
+          resultado = "Correcto";
+      }
+      res.render('quizes/answer', {quiz: quiz, respuesta: resultado, errors: []});
+  });
 };
 
 // GET  /quizes/new
@@ -122,7 +123,7 @@ exports.update = function(req, res) {
   	}
 };
 
-// Borrar 
+// Borrar
 exports.destroy = function(req, res) {
       req.quiz.destroy().then( function() {
       res.redirect('/quizes');
