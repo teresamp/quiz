@@ -25,10 +25,10 @@ exports.new = function (req, res) {
 //POST /quizes/:quizId/comments
 exports.create = function(req, res) {
         var comment = models.Comment.build (
-                { texto: req.body.comment.texto, QuizId: req.params.quizId});
+                { texto: req.body.comment.texto,
+                  QuizId: req.params.quizId
+                });
         var errors = comment.validate();//ya que el objeto errors no tiene then
-        console.log('ValordequiID='+ QuizId);
-        console.log'(ValorComentario=' + texto'):
         if (errors) {
             var i=0;
             var errores=new Array();//se convierte en [] con la propiedad message por compatibilida con layout
@@ -36,11 +36,13 @@ exports.create = function(req, res) {
                res.render('comments/new.ejs',
                      {comment: comment, quizid: req.params.quizId, errors: errores});
         } else {
+
                  comment // save: guarda en DB campos pregunta y respuesta de quiz
                  .save()
-                 .then( function(){ res.redirect('/quizes/' + req.params.quidId)
+                 .then( function(){ res.redirect('/quizes/' + req.params.quizId)
                  });
         }
+        console.log('ValorComentario=' + req.body.comment.texto);
 };
 
 
