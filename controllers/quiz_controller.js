@@ -9,8 +9,7 @@ exports.load = function(req, res, next, quizId) {
            id: Number(quizId)
         },
         include: [{
-            model: models.Comment
-        }]
+            model: models.Comment}]
      }).then(function(quiz) {
       if (quiz) {
         req.quiz = quiz;
