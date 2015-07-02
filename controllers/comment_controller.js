@@ -2,7 +2,7 @@ var models = require('../models/models.js');
 
 // Autoload :id de comentarios
 exports.load = function (req, res, next, commentId) {
-        models.Comment.find({
+        models.Comment.find ({
             where: {
                 id: Number(commentId)
             }
@@ -11,9 +11,9 @@ exports.load = function (req, res, next, commentId) {
                 req.comment = comment;
                 next();
             } else {
-                next(new Error("No existe commentId=" + commentId));
+                next (new Error("No existe commentId=" + commentId));
             }
-        }).catch(function(error) {next(error)});
+        }).catch(function (error) {next (error);});
 };
 
 
@@ -25,26 +25,18 @@ exports.new = function (req, res) {
 //POST /quizes/:quizId/comments
 exports.create = function(req, res) {
         var comment = models.Comment.build (
-                { texto: req.body.comment.texto,
-                  QuizId: req.params.quizId
+                { texto: req.body.comment.texto, QuizId: req.params.quizId});
+        comment.validate().then(function(err) {
+            if (err) {
+                res.render('comments/new.ejs',
+                    {comment: comment, quizid: req.params.quizId, errors: err.errors});
+            } else {
+                comment.save().then(function() {
+                    res.redirect('/quizes/' + req.params.quizId)
                 });
-        var errors = comment.validate();//ya que el objeto errors no tiene then
-        if (errors) {
-            var i=0;
-            var errores=new Array();//se convierte en [] con la propiedad message por compatibilida con layout
-            for (var prop in errors) errores[i++]={message: errors[prop]};
-               res.render('comments/new.ejs',
-                     {comment: comment, quizid: req.params.quizId, errors: errores});
-        } else {
-
-                 comment // save: guarda en DB campos pregunta y respuesta de quiz
-                 .save()
-                 .then(function(){ res.redirect('/quizes/' + req.params.quizId)
-                 });
-        }
-        console.log('ValorComentario=' + req.body.comment.texto);
+            }
+        }).catch(function(error) { next(error)});
 };
-
 
 // GET /quizes/:quizId/comments/:commentId/publish
 exports.publish = function (req, res) {
