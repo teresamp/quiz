@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var partials = require('express-partials');
 // Modulo 8
 var methodOverride =require('method-override');
+var session =require('express-session');
 //
 
 var routes = require('./routes/index');
