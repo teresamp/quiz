@@ -60,13 +60,13 @@ exports.show = function(req,res) {
 
 // GET /quizes/:id/answer
 exports.answer = function(req, res) {
-   models.Quiz.findById(req.params.quizId).then(function(quiz) {
+// models.Quiz.findById(req.params.quizId).then(function(quiz)
       var resultado = "Incorrecto";
       if (req.query.respuesta.toLowerCase() === req.quiz.respuesta.toLowerCase()) {
-          resultado = "Correcto";
-      }
-      res.render('quizes/answer', {quiz: quiz, respuesta: resultado, errors: []});
-  });
+          res.render('quizes/answer', {quiz: req.quiz, respuesta: 'Respuesta correcta', errors:[]});
+      } else {
+        res.render('quizes/answer', {quiz: req.quiz, respuesta: 'Respuesta incorrecta', errors:[]});
+    };
 };
 
 // GET  /quizes/new
