@@ -17,7 +17,7 @@ exports.load = function (req, res, next, commentId) {
 };
 
 
-// GET /quizes/:quizId/comment/new
+// GET /quizes/:quizId/comments/new
 exports.new = function (req, res) {
         res.render('comments/new.ejs', {quizid: req.params.quizId, errors: []});
 };
@@ -39,7 +39,7 @@ exports.create = function(req, res) {
 
                  comment // save: guarda en DB campos pregunta y respuesta de quiz
                  .save()
-                 .then( function(){ res.redirect('/quizes/' + req.params.quizId)
+                 .then(function(){ res.redirect('/quizes/' + req.params.quizId)
                  });
         }
         console.log('ValorComentario=' + req.body.comment.texto);

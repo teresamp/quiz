@@ -4,6 +4,7 @@ var router = express.Router();
 // TM julio 2015 - Presguntas-Comentarios
 var quizController = require('../controllers/quiz_controller');
 var commentController = require('../controllers/comment_controller');
+var sessionController = require('../controllers/session_controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -11,11 +12,16 @@ router.get('/', function(req, res) {
 });
 
 router.param('quizId', quizController.load);  //Autoload :quizId
-router.param('commentId', commentController.load); // autoload :commentId
+//router.param('commentId', commentController.load); // autoload :commentId
 
 router.get('/author', function(req, res) {
    res.render('author', { author: 'Teresa', image: '/images/foto.png', errors: []});
 });
+
+// Definición de rutas de sesion
+router.get('/login',  sessionController.new);     // formulario login
+router.post('/login', sessionController.create);  // crear sesión
+router.get('/logout', sessionController.destroy); // destruir sesión
 
 //router.get('/search', function(req, res) { res.render('search', {}); });
 
