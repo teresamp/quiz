@@ -1,11 +1,11 @@
 Pasos de los Ejercicios:
 
-Modulo6 de html-Miriadax
+--------- Modulo6 de html-Miriadax
 
 Partiendo del esqueleto quiz empezar a realizar cambios
-1) Primera página y añadir el favicon.ico. Documentación en transp_m6.pdf
-2) Añadir la primera pregunta /respuesta
-3) Instalar el marco de aplicación
+- Primera página y añadir el favicon.ico. Documentación en transp_m6.pdf
+- Añadir la primera pregunta /respuesta
+- Instalar el marco de aplicación
   cd mis_proyectos/quiz/node_modules
   $ npm install --save express-partials@0.3.0
       express-partials@0.3.0 node_modules/express-partials
@@ -15,10 +15,16 @@ Así apunta las dependencias en el fichero package.json de quiz
  - Modificar app.js
  - Modificar las vistas
  Guardo la version
-4) CSS adaptable a móviles - media-queries
-5) Heroku. Creo cuenta, instalo tools y creo el fichero Procfile
+- CSS adaptable a móviles - media-queries
+-  Heroku. Creo cuenta, instalo tools y creo el fichero Procfile
 La url de heroku de la primera aplicacion:
     https://quiz-tm.kerokuapp.com
+
+- Modulo 7 
+
+Mil problemas para desplegar la aplicacion en Heroku. 
+La aplicacion me funcionaba en local pero no en heroku. 
+
 
 ---  MODULO 8
 Las url:
@@ -40,5 +46,9 @@ Modulo9
 - m91 Añadir comentarios 
 - m92 Autonticacion y session ( cokkie)
 - m93 Autorizacion
- 
+- m94 Creo los certificados y compruebo qeu funciona https://localhost:8443
+
+Voy a crear una aplicacion nueva y una base de datos nueva.
+
+       quiz-m9.herokuapp.com  
    
