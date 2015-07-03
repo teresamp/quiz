@@ -20,10 +20,10 @@ Así apunta las dependencias en el fichero package.json de quiz
 La url de heroku de la primera aplicacion:
     https://quiz-tm.kerokuapp.com
 
-- Modulo 7 
+- Modulo 7
 
-Mil problemas para desplegar la aplicacion en Heroku. 
-La aplicacion me funcionaba en local pero no en heroku. 
+Mil problemas para desplegar la aplicacion en Heroku.
+La aplicacion me funcionaba en local pero no en heroku.
 
 
 ---  MODULO 8
@@ -38,12 +38,12 @@ Git         https://github.com/teresamp/quiz
   - Cambiar dependencias en package.json
    Añadir más preguntas
    Añadir el buscar el el campo pregunta
-   Añadir el Autoload 
+   Añadir el Autoload
    Añadir preguntas en la base de datos
    Editar /Borrar
 ---------------------
-Modulo9 
-- m91 Añadir comentarios 
+Modulo9
+- m91 Añadir comentarios
 - m92 Autonticacion y session ( cokkie)
 - m93 Autorizacion
 - m94 Creo los certificados y compruebo qeu funciona https://localhost:8443
@@ -51,4 +51,10 @@ Modulo9
 Voy a crear una aplicacion nueva y una base de datos nueva.
 
        quiz-m9.herokuapp.com  
-   
+        añado base de datos
+        Color es el JASPE
+
+
+Las url:
+        herokuapp   https://quiz-m9.herokuapp.com
+        Git         https://github.com/teresamp/quiz
